@@ -1,5 +1,6 @@
 package com.globallogic.items;
 
+//TODO ver lombok (opcional)
 public class Point {
 	private int x;
 	private int y;
@@ -23,10 +24,12 @@ public class Point {
 		this.y = y;
 	}
 	
+	//TODO es un toString ?
 	public String getPosition(){
 		return "(" + getX() + "," + getY() + ")";
 	}
 	
+	//TODO que mas falta hacer si cambias el equals ?
 	public boolean equals(Point point) {
 		return point.getX() == this.x && point.getY() == this.y;
 	}
