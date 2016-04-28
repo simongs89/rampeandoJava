@@ -24,6 +24,8 @@ public class Point {
 		this.y = y;
 	}
 	
+	//TODO soportar multiplicacion por K y suma de Point
+	
 	//TODO es un toString ?
 	public String getPosition(){
 		return "(" + getX() + "," + getY() + ")";
