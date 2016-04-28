@@ -16,6 +16,8 @@ public class Calculator {
 			return "colineal";
 	}
 
+        //TODO solucionar en una sola linea.
+        //TODO analizar posible clase Segment
 	public static boolean checkSegmentCut(Point u1, Point u2, Point v1, Point v2) {
 		if (pointRelativeToSegment(u1, u2, v1) == "colineal" || pointRelativeToSegment(u1, u2, v2) == "colineal"
 				|| pointRelativeToSegment(v1, v2, u1) == "colineal"
