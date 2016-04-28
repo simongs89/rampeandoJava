@@ -2,12 +2,14 @@ package com.globallogic.items;
 
 import java.util.ArrayList;
 
+//TODO no ser static
 public class TurtleManager {
 	public static int solution(int[] array) {
 		
 		Turtle turtle = new Turtle(new Point(0, 0));
 		int countDirection = 0;
 		
+		//TODO cambiar por un for each
 		for (int i = 0; i < array.length; i++) {
 			countDirection++;
 			
@@ -38,6 +40,7 @@ public class TurtleManager {
 		
 		ArrayList<Point> points = turtle.giveMeYourPath();
 		
+		//TODO consolidar en el for each anterior y salir por cortocircuito
 		for (Point point : points) {
 			for (Point checkPoint : points) {
 				Point u1 = null, u2 = null, v1 = null, v2 = null;
