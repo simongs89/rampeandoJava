@@ -2,6 +2,7 @@ package com.globallogic.items;
 
 import java.util.ArrayList;
 
+//TODO soportar avanzar, rotar
 public class Turtle {
 	
 	private ArrayList<Point> points = new ArrayList<>();
@@ -33,6 +34,7 @@ public class Turtle {
 		}
 	}
 	
+	//TODO es un toString ?
 	public void showYourPath(){
 		System.out.println("************* ALL POINTS WALKED **************");
 		for (Point point : points) {
