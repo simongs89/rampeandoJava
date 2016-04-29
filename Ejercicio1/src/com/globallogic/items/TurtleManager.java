@@ -2,15 +2,14 @@ package com.globallogic.items;
 
 import java.util.ArrayList;
 
-//TODO no ser static
 public class TurtleManager {
-	public static int solution(int[] array) {
+	
+	public int solution(int[] array) {
 		
 		Turtle turtle = new Turtle(new Point(0, 0));
 		int countDirection = 0;
 		
-		//TODO cambiar por un for each
-		for (int i = 0; i < array.length; i++) {
+		for (int i : array) {
 			countDirection++;
 			
 			if(countDirection > Direction.values().length){
@@ -33,31 +32,30 @@ public class TurtleManager {
 				break;
 			}
 			
-			turtle.go(array[i], direction);
-		}
-		turtle.showYourPath();
-		
-		
-		ArrayList<Point> points = turtle.giveMeYourPath();
-		
-		//TODO consolidar en el for each anterior y salir por cortocircuito
-		for (Point point : points) {
-			for (Point checkPoint : points) {
-				Point u1 = null, u2 = null, v1 = null, v2 = null;
-				try {					
-					u1 = point;
-					u2 = points.get(points.indexOf(point)+1);
-					v1 = checkPoint;
-					v2 = points.get(points.indexOf(checkPoint)+1);
-				} catch (Exception e) {
-					break;
-				}
-				if (Calculator.checkSegmentCut(u1, u2, v1, v2)) {
-					return points.indexOf(v2);
+			turtle.go(i, direction);
+			
+			ArrayList<Point> points = turtle.giveMeYourPath();
+			for (Point point : points) {
+				for (Point checkPoint : points) {
+					Point u1 = null, u2 = null, v1 = null, v2 = null;
+					try {					
+						u1 = point;
+						u2 = points.get(points.indexOf(point)+1);
+						v1 = checkPoint;
+						v2 = points.get(points.indexOf(checkPoint)+1);
+					} catch (Exception e) {
+						break;
+					}
+					Segment s1 = new Segment(u1, u2);
+					Segment s2 = new Segment(v1, v2);
+					if (s1.checkIsCut(s2)) {
+						turtle.showStringPath();
+						return points.indexOf(v2);
+					}
 				}
 			}
 		}
-		
+		turtle.showStringPath();
 		return 0;
 	}
 }

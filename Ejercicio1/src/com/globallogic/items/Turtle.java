@@ -34,11 +34,10 @@ public class Turtle {
 		}
 	}
 	
-	//TODO es un toString ?
-	public void showYourPath(){
+	public void showStringPath(){
 		System.out.println("************* ALL POINTS WALKED **************");
 		for (Point point : points) {
-			System.out.println(point.getPosition());
+			System.out.println(point.toString());
 		}
 		System.out.println("**********************************************");
 	}

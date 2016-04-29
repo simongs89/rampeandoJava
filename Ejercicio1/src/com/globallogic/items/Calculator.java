@@ -16,9 +16,14 @@ public class Calculator {
 			return "colineal";
 	}
 
-        //TODO solucionar en una sola linea.
-        //TODO analizar posible clase Segment
-	public static boolean checkSegmentCut(Point u1, Point u2, Point v1, Point v2) {
+    //TODO solucionar en una sola linea.
+	public static boolean checkIntersection(Segment s1, Segment s2) {
+		
+		Point u1 = s1.getStartPoint();
+		Point u2 = s1.getEndPoint();
+		Point v1 = s2.getStartPoint();
+		Point v2 = s2.getEndPoint();
+		
 		if (pointRelativeToSegment(u1, u2, v1) == "colineal" || pointRelativeToSegment(u1, u2, v2) == "colineal"
 				|| pointRelativeToSegment(v1, v2, u1) == "colineal"
 				|| pointRelativeToSegment(v1, v2, u2) == "colineal") {

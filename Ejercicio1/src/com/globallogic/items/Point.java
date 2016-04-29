@@ -24,15 +24,22 @@ public class Point {
 		this.y = y;
 	}
 	
-	//TODO soportar multiplicacion por K y suma de Point
+	public void multiply(int k){
+		this.x *= k;
+		this.y *= k;
+	}
 	
-	//TODO es un toString ?
-	public String getPosition(){
+	public void add(Point point){
+		this.x += point.getX();
+		this.y += point.getY();
+	}
+	
+	public String toString(){
 		return "(" + getX() + "," + getY() + ")";
 	}
 	
-	//TODO que mas falta hacer si cambias el equals ?
-	public boolean equals(Point point) {
-		return point.getX() == this.x && point.getY() == this.y;
+	@Override
+	public boolean equals(Object point) {
+		return ((Point)point).getX() == this.x && ((Point)point).getY() == this.y;
 	}
 }

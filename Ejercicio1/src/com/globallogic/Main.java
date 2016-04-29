@@ -16,10 +16,8 @@ public class Main {
 		array[6] = 6;
 		array[7] = 3;
 		array[8] = 2;
-		
-		System.out.println("FIRST TOUCH PREVIOS PATH AT MOVEMENT: " + TurtleManager.solution(array));
+		TurtleManager manager = new TurtleManager();
+		System.out.println("FIRST TOUCH PREVIOS PATH AT MOVEMENT: " + manager.solution(array));
 	}
-	
-	
 
 }
