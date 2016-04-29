@@ -20,6 +20,7 @@ public class Turtle {
 		directionAngle += degrees;
 	}
 	
+	//TODO cambiar a usar Segment
 	public void go(int steps){
 		Point lastPoint = points.get(points.size()-1);
 		Point nextPoint = new Point(lastPoint.getX(), lastPoint.getY());
