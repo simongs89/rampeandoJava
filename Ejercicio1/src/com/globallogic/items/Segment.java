@@ -1,5 +1,6 @@
 package com.globallogic.items;
 
+//TODO cambiar a inmutable
 public class Segment {
 	private Point startPoint;
 	private Point endPoint;
@@ -26,6 +27,7 @@ public class Segment {
 		this.endPoint = endPoint;
 	}
 	
+	//TODO recibir parametros con "final"
 	public boolean checkIsCut(Segment segment){
 		return Calculator.checkIntersection(this, segment);
 	}
