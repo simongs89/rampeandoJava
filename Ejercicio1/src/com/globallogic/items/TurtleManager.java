@@ -6,7 +6,9 @@ public class TurtleManager {
 	
 	public int solution(int[] array) {
 		
+		//TODO setear la tortuga mirando para arriba
 		Turtle turtle = new Turtle(new Point(0, 0));
+		//TODO variable no usada
 		int countDirection = 0;
 		
 		for (int i : array) {
@@ -19,6 +21,7 @@ public class TurtleManager {
 			turtle.rotate(90);
 			turtle.go(i);
 			
+			//TODO probar solo el ultimo movimiento ya que los otros ya no se tocaron
 			ArrayList<Point> points = turtle.giveMeYourPath();
 			for (Point point : points) {
 				for (Point checkPoint : points) {
