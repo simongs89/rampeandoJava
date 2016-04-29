@@ -1,7 +1,16 @@
 *.class
-
+*.settings
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+
+
+*.classpath
+*.project
+*.settings/org.eclipse.jdt.core.prefs
+*/target/
+*RemoteSystemsTempFiles/
+*.metadata/
+*.recommenders/
 
 # Package Files #
 *.jar

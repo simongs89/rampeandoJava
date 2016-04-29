@@ -12,27 +12,12 @@ public class TurtleManager {
 		for (int i : array) {
 			countDirection++;
 			
-			if(countDirection > Direction.values().length){
+			if(countDirection > 4){
 				countDirection = 1;
 			}
 			
-			Direction direction;
-			switch (countDirection) {
-			case 1:
-				direction = Direction.NORTH;
-				break;
-			case 2:
-				direction = Direction.EAST;
-				break;
-			case 3:
-				direction = Direction.SOUTH;
-				break;
-			default:
-				direction = Direction.WEST;
-				break;
-			}
-			
-			turtle.go(i, direction);
+			turtle.rotate(90);
+			turtle.go(i);
 			
 			ArrayList<Point> points = turtle.giveMeYourPath();
 			for (Point point : points) {

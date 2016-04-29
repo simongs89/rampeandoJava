@@ -2,10 +2,10 @@ package com.globallogic.items;
 
 import java.util.ArrayList;
 
-//TODO soportar avanzar, rotar
 public class Turtle {
 	
 	private ArrayList<Point> points = new ArrayList<>();
+	private int directionAngle = 0;;
 	
 	public Turtle(Point point) {
 		super();
@@ -16,26 +16,22 @@ public class Turtle {
 		return this.points;
 	}
 	
-	public void go(int steps, Direction direction){
-		
+	public void rotate(int degrees){
+		directionAngle += degrees;
+	}
+	
+	public void go(int steps){
 		Point lastPoint = points.get(points.size()-1);
-		
-		if(direction == Direction.NORTH){
-			points.add(new Point(lastPoint.getX(), lastPoint.getY()+steps));
-		}
-		if(direction == Direction.EAST){
-			points.add(new Point(lastPoint.getX()+steps, lastPoint.getY()));
-		}
-		if(direction == Direction.SOUTH){
-			points.add(new Point(lastPoint.getX(), lastPoint.getY()-steps));
-		}
-		if(direction == Direction.WEST){
-			points.add(new Point(lastPoint.getX()-steps, lastPoint.getY()));
-		}
+		Point nextPoint = new Point(lastPoint.getX(), lastPoint.getY());
+		Point versorPoint = new Point(Math.sin(Math.toRadians(directionAngle)), 
+				Math.cos(Math.toRadians(directionAngle)));
+		versorPoint.multiply(steps);
+		nextPoint.add(versorPoint);
+		points.add(nextPoint);
 	}
 	
 	public void showStringPath(){
-		System.out.println("************* ALL POINTS WALKED **************");
+		System.out.println("************* ALL POINTS WALKED WITHOUT TOUCH **************");
 		for (Point point : points) {
 			System.out.println(point.toString());
 		}
