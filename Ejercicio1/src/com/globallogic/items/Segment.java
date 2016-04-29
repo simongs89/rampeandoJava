@@ -29,5 +29,4 @@ public class Segment {
 	public boolean checkIsCut(Segment segment){
 		return Calculator.checkIntersection(this, segment);
 	}
-
 }
