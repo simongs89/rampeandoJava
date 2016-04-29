@@ -2,6 +2,7 @@ package com.globallogic.items;
 
 import lombok.Data;
 
+//TODO hacer inmutable
 public @Data class Point {
 	private int x;
 	private int y;
@@ -48,6 +49,8 @@ public @Data class Point {
 		return "(" + getX() + "," + getY() + ")";
 	}
 	
+	//TODO devolver false si te mandan point en null
+	//TODO SIEMPRE QUE SOBRESCRIVAS EL EQUALS TENES QUE SOBRESCRIBIR EL HASHCODE
 	@Override
 	public boolean equals(Object point) {
 		return ((Point)point).getX() == this.x && ((Point)point).getY() == this.y;
