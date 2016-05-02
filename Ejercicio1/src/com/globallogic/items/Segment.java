@@ -21,6 +21,7 @@ final public class Segment {
 		return endPoint;
 	}
 	
+	//TODO metodo al dolape
 	public boolean checkIsCut(final Segment segment){
 		return checkIntersection(segment);
 	}
@@ -46,7 +47,7 @@ final public class Segment {
 		Point u2 = this.getEndPoint();
 		Point v1 = s2.getStartPoint();
 		Point v2 = s2.getEndPoint();
-		
+		//TODO simplificate
 		if (pointRelativeToSegment(u1, u2, v1) == RELATION_COLINEAL || pointRelativeToSegment(u1, u2, v2) == RELATION_COLINEAL
 				|| pointRelativeToSegment(v1, v2, u1) == RELATION_COLINEAL
 				|| pointRelativeToSegment(v1, v2, u2) == RELATION_COLINEAL) {
