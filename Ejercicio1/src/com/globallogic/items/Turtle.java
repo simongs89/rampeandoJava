@@ -16,26 +16,26 @@ public class Turtle {
 		return this.path;
 	}
 
-	public void rotate(double radians) {
+	public void rotate(final double radians) {
 		this.radians += radians;
-		if(this.radians >= Math.PI * 2){
+		if (this.radians >= Math.PI * 2) {
 			this.radians -= Math.PI * 2;
 		}
 	}
 
-	public void go(int steps) {
+	public void go(final int steps) {
 		Point versorPoint = new Point((int) Math.sin(radians), (int) Math.cos(radians));
-		//TODO duplicated coded
-		path.add(new Segment(position, position.add(versorPoint.multiplyBy(steps))));
-		position = position.add(versorPoint.multiplyBy(steps));
+		Point nextPosition = position.add(versorPoint.multiplyBy(steps));
+		path.add(new Segment(position, nextPosition));
+		position = nextPosition;
 	}
 
 	public void showStringPath() {
-		System.out.println("************* ALL SEGMENTS WALKED WITHOUT TOUCH **************");
+		System.out.println("**** ALL SEGMENTS WALKED WITHOUT TOUCH *****");
 		for (Segment segment : path) {
 			System.out.println(segment.getStartPoint().toString() + " -> " + segment.getEndPoint().toString());
 		}
-		System.out.println("**********************************************");
+		System.out.println("********************************************");
 	}
 
 }

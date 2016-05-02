@@ -1,9 +1,9 @@
 package com.globallogic.items;
 
 final public class Segment {
-	private static final String RELATION_RIGHT = "derecha";
-	private static final String RELATION_LEFT = "izquierda";
-	private static final String RELATION_COLINEAL = "colineal";
+	private static final String RELATION_RIGHT = "RIGHT";
+	private static final String RELATION_LEFT = "LEFT";
+	private static final String RELATION_COLINEAL = "COLINEAL";
 	private final Point startPoint;
 	private final Point endPoint;
 
@@ -33,10 +33,7 @@ final public class Segment {
 
 		return relationSegmentOne == RELATION_COLINEAL || relationSegmentTwo == RELATION_COLINEAL
 				|| relationSegmentThree == RELATION_COLINEAL || relationSegmentFour == RELATION_COLINEAL
-				|| !(((relationSegmentOne == RELATION_LEFT && relationSegmentTwo == RELATION_RIGHT)
-						|| (relationSegmentOne == RELATION_RIGHT && relationSegmentTwo == RELATION_LEFT))
-						&& ((relationSegmentThree == RELATION_RIGHT && relationSegmentFour == RELATION_LEFT)
-								|| (relationSegmentThree == RELATION_LEFT && relationSegmentFour == RELATION_RIGHT)));
+				|| !(relationSegmentOne != relationSegmentTwo && relationSegmentThree != relationSegmentFour);
 
 	}
 

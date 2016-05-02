@@ -4,6 +4,7 @@
 	<groupId>Ejercicio1</groupId>
 	<artifactId>Ejercicio1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
@@ -17,12 +18,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<dependencies>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.16.8</version>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
 </project>
