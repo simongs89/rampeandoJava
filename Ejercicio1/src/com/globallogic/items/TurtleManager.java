@@ -4,28 +4,25 @@ import java.util.ArrayList;
 
 public class TurtleManager {
 
-	//TODO final ?
-	public int solution(int[] array) {
+	public int solution(final int[] array) {
 
 		Turtle turtle = new Turtle(new Point(0, 0));
 
 		for (int i : array) {
 
 			turtle.go(i);
-			turtle.rotate(90);
+			turtle.rotate(Math.PI / 2);
 
 			ArrayList<Segment> path = turtle.giveMeYourPath();
-			
-			//TODO ahorrarse este if
-			if (path.size() > 1) {
-				Segment lastSegment = path.get(path.size() - 1);
-				for (Segment segment : path) {
-					if (segment != lastSegment && segment.checkIsCut(lastSegment)) {
-						turtle.showStringPath();
-						return ++i;
-					}
+
+			Segment lastSegment = path.get(path.size() - 1);
+			for (Segment segment : path) {
+				if (segment != lastSegment && segment.checkIsCut(lastSegment)) {
+					turtle.showStringPath();
+					return ++i;
 				}
 			}
+
 		}
 		turtle.showStringPath();
 		return 0;

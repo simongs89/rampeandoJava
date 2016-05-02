@@ -16,19 +16,29 @@ final public class Segment {
 		return startPoint;
 	}
 
-
 	public Point getEndPoint() {
 		return endPoint;
 	}
-	
-	//TODO metodo al dolape
-	public boolean checkIsCut(final Segment segment){
-		return checkIntersection(segment);
-	}
-	
-	private int getTriangleArea(final Point pointA, final Point pointB, final Point pointC) {
-		return (pointB.getX() - pointA.getX()) * (pointC.getY() - pointA.getY())
-				- (pointC.getX() - pointA.getX()) * (pointB.getY() - pointA.getY());
+
+	public boolean checkIsCut(final Segment s2) {
+		Point u1 = getStartPoint();
+		Point u2 = getEndPoint();
+		Point v1 = s2.getStartPoint();
+		Point v2 = s2.getEndPoint();
+
+		return !(pointRelativeToSegment(u1, u2, v1) == RELATION_COLINEAL
+				|| pointRelativeToSegment(u1, u2, v2) == RELATION_COLINEAL
+				|| pointRelativeToSegment(v1, v2, u1) == RELATION_COLINEAL
+				|| pointRelativeToSegment(v1, v2, u2) == RELATION_COLINEAL
+				|| !(((pointRelativeToSegment(u1, u2, v1) == RELATION_LEFT
+						&& pointRelativeToSegment(u1, u2, v2) == RELATION_RIGHT)
+						|| (pointRelativeToSegment(u1, u2, v1) == RELATION_RIGHT
+								&& pointRelativeToSegment(u1, u2, v2) == RELATION_LEFT))
+						&& ((pointRelativeToSegment(v1, v2, u1) == RELATION_RIGHT
+								&& pointRelativeToSegment(v1, v2, u2) == RELATION_LEFT)
+								|| (pointRelativeToSegment(v1, v2, u1) == RELATION_LEFT
+										&& pointRelativeToSegment(v1, v2, u2) == RELATION_RIGHT))));
+
 	}
 
 	private String pointRelativeToSegment(final Point pointA, final Point pointB, final Point p) {
@@ -41,28 +51,8 @@ final public class Segment {
 			return RELATION_COLINEAL;
 	}
 
-	private boolean checkIntersection(final Segment s2) {
-		
-		Point u1 = this.getStartPoint();
-		Point u2 = this.getEndPoint();
-		Point v1 = s2.getStartPoint();
-		Point v2 = s2.getEndPoint();
-		//TODO simplificate
-		if (pointRelativeToSegment(u1, u2, v1) == RELATION_COLINEAL || pointRelativeToSegment(u1, u2, v2) == RELATION_COLINEAL
-				|| pointRelativeToSegment(v1, v2, u1) == RELATION_COLINEAL
-				|| pointRelativeToSegment(v1, v2, u2) == RELATION_COLINEAL) {
-			return false;
-		} else
-			if (((pointRelativeToSegment(u1, u2, v1) == RELATION_LEFT && pointRelativeToSegment(u1, u2, v2) == RELATION_RIGHT)
-				|| (pointRelativeToSegment(u1, u2, v1) == RELATION_RIGHT
-							&& pointRelativeToSegment(u1, u2, v2) == RELATION_LEFT))
-					&& ((pointRelativeToSegment(v1, v2, u1) == RELATION_RIGHT
-							&& pointRelativeToSegment(v1, v2, u2) == RELATION_LEFT)
-							|| (pointRelativeToSegment(v1, v2, u1) == RELATION_LEFT
-									&& pointRelativeToSegment(v1, v2, u2) == RELATION_RIGHT))) {
-			return true;
-		} else {
-			return false;
-		}
+	private int getTriangleArea(final Point pointA, final Point pointB, final Point pointC) {
+		return (pointB.getX() - pointA.getX()) * (pointC.getY() - pointA.getY())
+				- (pointC.getX() - pointA.getX()) * (pointB.getY() - pointA.getY());
 	}
 }
