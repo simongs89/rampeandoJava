@@ -5,7 +5,7 @@ import com.globallogic.items.TurtleManager;
 public class Main {
 
 	public static void main(String[] args) {
-		//TODO tomar valores desde linea de comandos
+		// TODO tomar valores desde linea de comandos
 		int[] array = new int[9];
 		array[0] = 1;
 		array[1] = 3;

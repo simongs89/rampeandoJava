@@ -3,38 +3,34 @@ package com.globallogic.items;
 import java.util.ArrayList;
 
 public class Turtle {
-	
-	private ArrayList<Point> points = new ArrayList<>();
-	private int directionAngle = 0;;
-	
-	public Turtle(Point point) {
-		super();
-		points.add(point);
+
+	private ArrayList<Segment> path = new ArrayList<>();
+	private final Point startPoint;
+	private int directionAngle = 0;
+
+	public Turtle(final Point point) {
+		this.startPoint = point;
 	}
-	
-	public ArrayList<Point> giveMeYourPath(){
-		return this.points;
+
+	public ArrayList<Segment> giveMeYourPath() {
+		return this.path;
 	}
-	
-	public void rotate(int degrees){
+
+	public void rotate(int degrees) {
 		directionAngle += degrees;
 	}
-	
-	//TODO cambiar a usar Segment
-	public void go(int steps){
-		Point lastPoint = points.get(points.size()-1);
-		Point nextPoint = new Point(lastPoint.getX(), lastPoint.getY());
-		Point versorPoint = new Point(Math.sin(Math.toRadians(directionAngle)), 
-				Math.cos(Math.toRadians(directionAngle)));
-		versorPoint.multiply(steps);
-		nextPoint.add(versorPoint);
-		points.add(nextPoint);
+
+	public void go(int steps) {
+		Point lastPoint = (path.size() == 0) ? this.startPoint : path.get(path.size() - 1).getEndPoint();
+		Point versorPoint = (new Point((int) Math.sin(Math.toRadians(directionAngle)),
+				(int) Math.cos(Math.toRadians(directionAngle))));
+		path.add(new Segment(lastPoint, lastPoint.addPoint(versorPoint.multiplyPerConstant(steps))));
 	}
-	
-	public void showStringPath(){
-		System.out.println("************* ALL POINTS WALKED WITHOUT TOUCH **************");
-		for (Point point : points) {
-			System.out.println(point.toString());
+
+	public void showStringPath() {
+		System.out.println("************* ALL SEGMENTS WALKED WITHOUT TOUCH **************");
+		for (Segment segment : path) {
+			System.out.println(segment.getStartPoint().toString() + " -> " + segment.getEndPoint().toString());
 		}
 		System.out.println("**********************************************");
 	}
