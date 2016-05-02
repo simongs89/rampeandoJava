@@ -25,6 +25,7 @@ public class Turtle {
 
 	public void go(int steps) {
 		Point versorPoint = new Point((int) Math.sin(radians), (int) Math.cos(radians));
+		//TODO duplicated coded
 		path.add(new Segment(position, position.add(versorPoint.multiplyBy(steps))));
 		position = position.add(versorPoint.multiplyBy(steps));
 	}
