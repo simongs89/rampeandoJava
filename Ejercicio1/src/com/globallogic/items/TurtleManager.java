@@ -17,7 +17,7 @@ public class TurtleManager {
 
 			Segment lastSegment = path.get(path.size() - 1);
 			for (Segment segment : path) {
-				if (segment != lastSegment && segment.checkIsCut(lastSegment)) {
+				if (segment != lastSegment && !segment.checkIsntCut(lastSegment)) {
 					turtle.showStringPath();
 					return ++i;
 				}

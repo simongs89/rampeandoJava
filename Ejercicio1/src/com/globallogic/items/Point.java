@@ -28,7 +28,7 @@ final public class Point {
 
 	@Override
 	public String toString() {
-		return "(" + getX() + "," + getY() + ")";
+		return "(" + x + "," + y + ")";
 	}
 
 	@Override
@@ -38,8 +38,7 @@ final public class Point {
 
 	@Override
 	public boolean equals(final Object point) {
-		return point != null && point instanceof Point && ((Point) point).getX() == this.x
-				&& ((Point) point).getY() == this.y;
+		return point != null && point instanceof Point && ((Point) point).x == x && ((Point) point).y == y;
 	}
 
 }

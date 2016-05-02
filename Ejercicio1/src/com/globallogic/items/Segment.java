@@ -20,25 +20,23 @@ final public class Segment {
 		return endPoint;
 	}
 
-	public boolean checkIsCut(final Segment s2) {
+	public boolean checkIsntCut(final Segment s2) {
 		Point u1 = getStartPoint();
 		Point u2 = getEndPoint();
 		Point v1 = s2.getStartPoint();
 		Point v2 = s2.getEndPoint();
 
-		//TODO poner en variables para evitar rellamadas
-		return !(pointRelativeToSegment(u1, u2, v1) == RELATION_COLINEAL
-				|| pointRelativeToSegment(u1, u2, v2) == RELATION_COLINEAL
-				|| pointRelativeToSegment(v1, v2, u1) == RELATION_COLINEAL
-				|| pointRelativeToSegment(v1, v2, u2) == RELATION_COLINEAL
-				|| !(((pointRelativeToSegment(u1, u2, v1) == RELATION_LEFT
-						&& pointRelativeToSegment(u1, u2, v2) == RELATION_RIGHT)
-						|| (pointRelativeToSegment(u1, u2, v1) == RELATION_RIGHT
-								&& pointRelativeToSegment(u1, u2, v2) == RELATION_LEFT))
-						&& ((pointRelativeToSegment(v1, v2, u1) == RELATION_RIGHT
-								&& pointRelativeToSegment(v1, v2, u2) == RELATION_LEFT)
-								|| (pointRelativeToSegment(v1, v2, u1) == RELATION_LEFT
-										&& pointRelativeToSegment(v1, v2, u2) == RELATION_RIGHT))));
+		String relationSegmentOne = pointRelativeToSegment(u1, u2, v1);
+		String relationSegmentTwo = pointRelativeToSegment(u1, u2, v2);
+		String relationSegmentThree = pointRelativeToSegment(v1, v2, u1);
+		String relationSegmentFour = pointRelativeToSegment(v1, v2, u2);
+
+		return relationSegmentOne == RELATION_COLINEAL || relationSegmentTwo == RELATION_COLINEAL
+				|| relationSegmentThree == RELATION_COLINEAL || relationSegmentFour == RELATION_COLINEAL
+				|| !(((relationSegmentOne == RELATION_LEFT && relationSegmentTwo == RELATION_RIGHT)
+						|| (relationSegmentOne == RELATION_RIGHT && relationSegmentTwo == RELATION_LEFT))
+						&& ((relationSegmentThree == RELATION_RIGHT && relationSegmentFour == RELATION_LEFT)
+								|| (relationSegmentThree == RELATION_LEFT && relationSegmentFour == RELATION_RIGHT)));
 
 	}
 
