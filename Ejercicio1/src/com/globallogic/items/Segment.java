@@ -26,6 +26,7 @@ final public class Segment {
 		Point v1 = s2.getStartPoint();
 		Point v2 = s2.getEndPoint();
 
+		//TODO poner en variables para evitar rellamadas
 		return !(pointRelativeToSegment(u1, u2, v1) == RELATION_COLINEAL
 				|| pointRelativeToSegment(u1, u2, v2) == RELATION_COLINEAL
 				|| pointRelativeToSegment(v1, v2, u1) == RELATION_COLINEAL
