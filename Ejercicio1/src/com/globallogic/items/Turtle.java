@@ -17,13 +17,16 @@ public class Turtle {
 	}
 
 	public void rotate(int degrees) {
+		//TODO normalizar el angulo
 		directionAngle += degrees;
 	}
 
 	public void go(int steps) {
+		//TODO cambiar por turtle.position
 		Point lastPoint = (path.size() == 0) ? this.startPoint : path.get(path.size() - 1).getEndPoint();
 		Point versorPoint = (new Point((int) Math.sin(Math.toRadians(directionAngle)),
 				(int) Math.cos(Math.toRadians(directionAngle))));
+		//TODO cambiar addPoint a add, y multiplybla a multiplyBy
 		path.add(new Segment(lastPoint, lastPoint.addPoint(versorPoint.multiplyPerConstant(steps))));
 	}
 
