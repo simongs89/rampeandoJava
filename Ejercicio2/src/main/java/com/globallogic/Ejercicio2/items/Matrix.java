@@ -13,7 +13,7 @@ final public class Matrix {
 		for (int numberComb = 0; numberComb < Math.pow(2, numberMoves); numberComb++) {
 			String movements = String.format("%" + numberMoves + "s", Integer.toBinaryString(numberComb)).replace(" ", "0");
 			if (hasSameOnesAndZeros(movements, numberMoves/2)) {
-				combinations.add(new Combination(movements));
+				combinations.add(new Combination(movements.toCharArray()));
 			}
 		}
 

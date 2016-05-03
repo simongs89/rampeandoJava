@@ -13,8 +13,7 @@ final public class MatrixResolver {
 		for (Combination combination : combinations) {
 			int row = 0, column = 0;
 			combination.add(matrix[row][column]);
-			String movements = combination.getMovements();
-			for (char move : movements.toCharArray()) {
+			for (char move : combination.getMovements()) {
 				if (move == MOVE_DOWN) {
 					row++;
 				} else if(move == MOVE_RIGHT){
