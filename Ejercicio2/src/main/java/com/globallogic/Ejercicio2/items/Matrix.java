@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 final public class Matrix {
 
-	public Combination getBetterPath(final int[][] matrix) {
+	public Combination getBetterCombination(final int[][] matrix) {
 
 		int numberMoves = (2 * matrix[0].length) - 2; // (2*N)-2
 
@@ -23,8 +23,8 @@ final public class Matrix {
 
 	private boolean hasSameOnesAndZeros(final String combination, int quantity) {
 		int countOne = 0, countZero = 0;
-		for (int charIndex = 0; charIndex < combination.length(); charIndex++) {
-			if (combination.charAt(charIndex) == '1') {
+		for (char character : combination.toCharArray()) {
+			if (character == '1') {
 				countOne++;
 			}else{
 				countZero++;

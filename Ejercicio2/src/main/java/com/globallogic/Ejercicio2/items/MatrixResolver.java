@@ -14,10 +14,10 @@ final public class MatrixResolver {
 			int row = 0, column = 0;
 			combination.add(matrix[row][column]);
 			String movements = combination.getMovements();
-			for (int charIndex = 0; charIndex < movements.length(); charIndex++) {
-				if (movements.charAt(charIndex) == MOVE_DOWN) {
+			for (char move : movements.toCharArray()) {
+				if (move == MOVE_DOWN) {
 					row++;
-				} else if(movements.charAt(charIndex) == MOVE_RIGHT){
+				} else if(move == MOVE_RIGHT){
 					column++;
 				}
 				combination.add(matrix[row][column]);

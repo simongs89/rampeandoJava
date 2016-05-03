@@ -49,7 +49,7 @@ public class AppTest extends TestCase {
 			System.out.println();
 			System.out.println("---------------");
 		}
-		betterCombination = matrix.getBetterPath(multidimensionalArray);
+		betterCombination = matrix.getBetterCombination(multidimensionalArray);
 		System.out.println(betterCombination.getMovements());
 		System.out.println(betterCombination.getValue());
 		assertEquals(24, betterCombination.getValue());
@@ -64,7 +64,7 @@ public class AppTest extends TestCase {
 			System.out.println();
 			System.out.println("---------------");
 		}
-		betterCombination = matrix.getBetterPath(multidimensionalArray);
+		betterCombination = matrix.getBetterCombination(multidimensionalArray);
 		System.out.println(betterCombination.getMovements());
 		System.out.println(betterCombination.getValue());
 		assertEquals(7, betterCombination.getValue());
@@ -79,7 +79,7 @@ public class AppTest extends TestCase {
 			System.out.println();
 			System.out.println("---------------");
 		}
-		betterCombination = matrix.getBetterPath(multidimensionalArray);
+		betterCombination = matrix.getBetterCombination(multidimensionalArray);
 		System.out.println(betterCombination.getMovements());
 		System.out.println(betterCombination.getValue());
 		assertEquals(28, betterCombination.getValue());
@@ -99,7 +99,7 @@ public class AppTest extends TestCase {
 			System.out.println();
 			System.out.println("---------------");
 		}
-		betterCombination = matrix.getBetterPath(multidimensionalArray);
+		betterCombination = matrix.getBetterCombination(multidimensionalArray);
 		System.out.println(betterCombination.getMovements());
 		System.out.println(betterCombination.getValue());
 		assertEquals(97, betterCombination.getValue());
