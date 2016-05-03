@@ -6,6 +6,8 @@ final public class MatrixResolver {
 
 	private static final char MOVE_DOWN = '1';
 	private static final char MOVE_RIGHT = '0';
+	
+	private static int stack = 0;
 
 	public Combination resolveBetter(final int[][] matrix, final ArrayList<Combination> combinations) {
 
@@ -27,6 +29,17 @@ final public class MatrixResolver {
 		}
 
 		return betterCombination;
+	}
+	
+	public int getMaxWeight(final int[][] matrix, int row, int col){
+		if(row >= matrix[0].length || col >= matrix.length){
+			return 0;
+		}else{
+			System.out.println("STACK ABIERTO " + stack++);
+			int byDown = getMaxWeight(matrix, row+1, col);
+			int byRight = getMaxWeight(matrix, row, col+1);
+			return matrix[row][col] + (byDown>byRight ? byDown : byRight);
+		}
 	}
 
 }
