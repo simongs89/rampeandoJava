@@ -24,8 +24,11 @@ public class Car extends Thread {
 	public void run() {
 		while (lane != null) {
 			try {
+				//TODO espere 1 solo seg
 				TimeUnit.SECONDS.sleep(2);
+				//TODO cambiar por dormir y despertar (notifications)
 				checkAndGo();
+			//TODO interrupcion no causa salida del metodo
 			} catch (InterruptedException e) {
 				System.out.println(e.getMessage());
 			}
