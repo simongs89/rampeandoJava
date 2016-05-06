@@ -13,16 +13,16 @@ public class Street extends Thread {
 	private Lane rightLane = new Lane(CARS_BY_LANE, exitLane);
 
 
-	public void add(Car car, final Side laneSide) {
+	public void add(Car car, final String laneSide) {
 		Lane lane;
-		if (laneSide == Side.LEFT) {
+		if (laneSide == "L") {
 			lane = leftLane;
-		} else if (laneSide == Side.CENTER) {
+		} else if (laneSide == "C") {
 			lane = centerLane;
 		} else {
 			lane = rightLane;
 		}
-		if (!lane.isFull()) {
+		if (lane.getCars()[0] == null) {
 			lane.add(car);
 			car.setLane(lane);
 			car.start();
@@ -50,22 +50,22 @@ public class Street extends Thread {
 	private void printLeftLane(){
 		System.out.println("________________________");
 		for (Car car : leftLane.getCars()) {
-			String carName = (car == null) ? "   " : car.getCarName();
+			String carName = (car == null) ? "   " : car.getName();
 			System.out.print("(" + carName + ")  ");
 		}
-		System.out.println();
+		System.out.println("   |________________________________");
 		System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 	}
 	
 	private void printCenterLane(){
 		// CARRIL CENTRO
 		for (Car car : centerLane.getCars()) {
-			String carName = (car == null) ? "   " : car.getCarName();
+			String carName = (car == null) ? "   " : car.getName();
 			System.out.print("(" + carName + ")  ");
 		}
 		
 		for (Car car : exitLane.getCars()) {
-			String carName = (car == null) ? "   " : car.getCarName();
+			String carName = (car == null) ? "   " : car.getName();
 			System.out.print("   (" + carName + ")  ");
 		}
 
@@ -75,10 +75,10 @@ public class Street extends Thread {
 	
 	private void printRightLane(){
 		for (Car car : rightLane.getCars()) {
-			String carName = (car == null) ? "   " : car.getCarName();
+			String carName = (car == null) ? "   " : car.getName();
 			System.out.print("(" + carName + ")  ");
 		}
-		System.out.println();
+		System.out.println("   |");
 		System.out.println("________________________");
 	}
 
