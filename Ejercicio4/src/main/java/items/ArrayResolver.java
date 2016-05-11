@@ -61,4 +61,31 @@ public class ArrayResolver {
         }
     }
 
+    public int getPositionEqualSideValuesBySume(final int[] array) {
+        cache = new HashMap<String, Integer>();
+        int midPosition = array.length / 2;
+        int leftValue = 0, rightValue = 0;
+
+        for (int i = 0; i <= midPosition; i++) {
+            leftValue += array[i];
+        }
+
+        for (int i = midPosition; i < array.length; i++) {
+            rightValue += array[i];
+        }
+        while (leftValue != rightValue) {
+            if (leftValue > rightValue) {
+                leftValue -= array[midPosition];
+                rightValue += array[midPosition - 1];
+                midPosition--;
+            } else if (leftValue < rightValue) {
+                leftValue += array[midPosition + 1];
+                rightValue -= array[midPosition];
+                midPosition++;
+            }
+        }
+
+        return ++midPosition;
+    }
+
 }

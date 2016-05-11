@@ -1,0 +1,27 @@
+plugins {
+    id 'io.spring.dependency-management' version '0.5.4.RELEASE'
+    id 'java'
+    id 'war'
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'io.spring.platform:platform-bom:2.0.4.RELEASE'
+    }
+}
+
+group 'com.globallogic'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}

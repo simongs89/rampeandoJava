@@ -22,6 +22,12 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <arguments>
+                        <argument>
+                            -Xmx512m
+                        </argument>
+                    </arguments>
+
                     <mainClass>Main</mainClass>
                 </configuration>
             </plugin>
