@@ -1,21 +1,43 @@
 package com.globallogic.todolist.controllers;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import com.globallogic.todolist.models.Task;
+import com.globallogic.todolist.services.TaskServices;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
-@EnableAutoConfiguration
+import java.util.List;
+
+@RestController
+@RequestMapping("/tasks")
 public class TaskController {
-    @RequestMapping("/")
-    @ResponseBody
-    String home() {
-        return "Hello World!";
+
+    @Autowired
+    private TaskServices taskServices;
+
+    @RequestMapping
+    public List<Task> getTasks() {
+        return taskServices.getAllTasks();
     }
 
-    public static void main(String[] args) throws Exception {
-        SpringApplication.run(TaskController.class, args);
+    @RequestMapping("/{id}")
+    public Task getTask(@PathVariable(value = "id") long id) {
+        return taskServices.getTask(id);
     }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public Task createTask(@RequestBody Task task) {
+        return taskServices.createTask(task);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+    public Task updateTask(@PathVariable(value = "id") long id, @RequestBody Task task) {
+        return taskServices.updateTask(id, task);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public void deleteTask(@PathVariable(value = "id") long id) {
+        taskServices.deleteTask(id);
+    }
+
+
 }
