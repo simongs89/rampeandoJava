@@ -12,6 +12,8 @@
 *RemoteSystemsTempFiles/
 *.metadata/
 *.recommenders/
+*.bin
+*.lock
 
 # Package Files #
 *.jar
