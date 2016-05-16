@@ -1,20 +1,14 @@
 package com.globallogic.todolist.models;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Task {
 
+    @Id
     private long id;
     private String content;
-
-    public Task(String content) {
-        this.id = id;
-        this.content = content;
-    }
-
-    public Task() {
-    }
 
     public long getId() {
         return id;

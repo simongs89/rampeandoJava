@@ -1,57 +1,40 @@
 package com.globallogic.todolist.services;
 
 import com.globallogic.todolist.models.Task;
+import com.globallogic.todolist.repositories.TaskMongoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class TaskServices {
 
-    private List<Task> taskList = new ArrayList<>();
+    @Autowired
+    private TaskMongoRepository taskRepository;
 
-    public TaskServices() {
-        taskList.add(new Task("name"));
-        taskList.add(new Task("name"));
-        taskList.add(new Task("name"));
-    }
 
     public List<Task> getAllTasks() {
-        return taskList;
+        return taskRepository.findAll();
     }
 
     public Task getTask(long id) {
-        for (Task task : taskList) {
-            if (task.getId() == id) {
-                return task;
-            }
-        }
-        return null;
+        return taskRepository.findOne(id);
     }
 
     public void deleteTask(long id) {
-        for (Task task : taskList) {
-            if (task.getId() == id) {
-                taskList.remove(task);
-                return;
-            }
-        }
+        taskRepository.delete(taskRepository.findOne(id));
     }
 
-    public Task createTask(Task t) {
-        Task task = new Task(t.getContent());
-        taskList.add(task);
-        return task;
+    public Task createTask(Task task) {
+        task.setId((new Date()).getTime());
+        return taskRepository.save(task);
     }
 
-    public Task updateTask(long id, Task t) {
-        for (Task task : taskList) {
-            if (task.getId() == id) {
-                task.setContent(t.getContent());
-                return task;
-            }
-        }
-        return null;
+    public Task updateTask(long id, Task task) {
+        Task t = taskRepository.findOne(id);
+        t.setContent(task.getContent());
+        return taskRepository.save(t);
     }
 }
