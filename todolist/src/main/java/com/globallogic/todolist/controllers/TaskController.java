@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/tasks")
+@RequestMapping("/users/{nickName}/tasks")
 public class TaskController {
 
     @Autowired
     private TaskServices taskServices;
 
     @RequestMapping
-    public List<Task> getTasks() {
-        return taskServices.getAllTasks();
+    public List<Task> getTasks(@PathVariable(value = "nickName") String nickName) {
+        return taskServices.getTasksByUser(nickName);
     }
 
     @RequestMapping("/{id}")
@@ -25,8 +25,8 @@ public class TaskController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public Task createTask(@RequestBody Task task) {
-        return taskServices.createTask(task);
+    public Task createTask(@PathVariable(value = "nickName") String nickName, @RequestBody Task task) {
+        return taskServices.createTask(nickName, task);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
@@ -38,6 +38,5 @@ public class TaskController {
     public void deleteTask(@PathVariable(value = "id") long id) {
         taskServices.deleteTask(id);
     }
-
 
 }

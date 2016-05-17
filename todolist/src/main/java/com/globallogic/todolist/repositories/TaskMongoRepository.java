@@ -11,8 +11,6 @@ public interface TaskMongoRepository extends MongoRepository<Task, Long>{
 
     Task findOne(Long id);
 
-    List<Task> findAll();
-
     void delete(Task task);
 
     Task save(Task task);
